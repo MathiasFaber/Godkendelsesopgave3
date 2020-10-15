@@ -19,7 +19,7 @@ server.get('/', userController)
 server.get('/protected', ensureToken,  protectedController)
 server.post('/login', loginController)
 
-
+// (/login) giver mig et token, men hvordan bruger jeg det token til at komme ind på den (/protected) hjemmeside??
 
 
 //CRUD for users
