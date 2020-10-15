@@ -1,13 +1,5 @@
-/*class interests {
-    constructor(interests)
-    {
-    this.interests = interests;
-    }
-}
-*/
-
 class user {
-    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests /*interests*/)
+    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match /*interests*/)
     {
         this.name = name;
         this.birthday = birthday;
@@ -17,6 +9,7 @@ class user {
         this.password = password;
         this.uniqueUserID = uniqueUserID;
         this.interests = interests;
+        this.match = match; 
         //this.interests = new interests;
 
 
@@ -53,9 +46,11 @@ class creditCard {
 }
 
 //brug noget "filter" til filtrere mænd og kvinder til at matche
-class match {
-
-}
+//class match {
+    // if user1 interests = user2 interests
+    //     create match
+    //Hvordan laver vi match klasse?
+//}
 
 //Exporterer classen
 module.exports = user;
