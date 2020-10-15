@@ -21,7 +21,7 @@ server.post('/login', protectedController)
 
 // (/login) giver mig et token, men hvordan bruger jeg det token til at komme ind på den (/protected) hjemmeside??
 
-
+// Her laver jeg min developer branch, den skal være sej 
 
 
 //CRUD for users
