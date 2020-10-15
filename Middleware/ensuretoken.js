@@ -3,7 +3,7 @@ function ensureToken(req, res, next){
     const header = req.headers["authorization"]
     console.log(header)
     if (header == undefined){
-        res.sendStatus(403)
+        res.sendStatus(401)
     } else{
         const bearer = header.split(" ")
         const headerToken = bearer[1]

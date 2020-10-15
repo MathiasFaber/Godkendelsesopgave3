@@ -16,15 +16,17 @@ const ensureToken = require('./Middleware/ensureToken')
 //read endpoint på routen '/'. Her ses alle brugerne. 
 server.get('/', userController)
 
-server.get('/protected', ensureToken,  protectedController)
-server.post('/login', loginController)
+//server.get('/protected', ensureToken,  protectedController) //denne er brugt i CRUD for user 1, for at beskytte den side, og brugere har kun adgang med login token
+server.post('/login', protectedController)
 
 // (/login) giver mig et token, men hvordan bruger jeg det token til at komme ind på den (/protected) hjemmeside??
 
 
+
+
 //CRUD for users
 //get request for user1 arrayet. dvs alle oplysnignerne om user 1
-server.get('/user1', (req, res)=> {
+server.get('/user1', ensureToken,  protectedController, (req, res)=> {
     res.send(HardUser[0]);
 })
 
