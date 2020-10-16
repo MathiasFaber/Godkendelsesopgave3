@@ -38,13 +38,13 @@ server.post('/user2', ensureToken,  protectedController, (req, res)=>{
 })
 
 //Sletter min hardcodede user. (dette giver ikke rigtigt mening i denne opgave, da vi hardcoder)
-//Dette request kan bruges, hvis man ikke havde hardcodet brugerne, og på den måde slette et match
+//Dette request kan bruges, hvis man ikke havde hardcodet brugerne, og på den måde slette et match eksempelvis
 server.delete('/user2delete', ensureToken,  protectedController, (req, res)=>{
     res.send('Har slettet:' + " " + HardUser[1].name);
 })
 
 //Denne update request opdaterer en bruger, men da brugerne er hardcodet er dette blot vist ved at,
-//lave en ny bruger ud fra user 1, men med nogle få ændringer. 
+//lave en ny bruger ud fra user 1, men med nogle få ændringer. (ændringen hedder User3 i HardUser.js dokumentet.)
 server.put('/user1put', ensureToken,  protectedController, (req, res)=>{
     res.send(HardUser[2]);
 })
@@ -56,20 +56,8 @@ server.get('/user1getmatch', ensureToken,  protectedController, (req, res)=>{
     res.send(HardUser[0].match);
 })
 
-//Post request for user1 match array. 
-server.post('/user1postmatch', ensureToken,  protectedController, (req, res)=>{
-    res.send(HardUser[0].match);
-})
-
-//Get request for user 2 matches
-server.get('/user2matchget', ensureToken,  protectedController, (req, res)=>{
-    res.send(HardUser[1].match);
-})
-
-
-//Post request for user2 match array
-
-server.post('/user2matchpost', (req, res)=>{
+//Get request for user 2's matches
+server.get('/user2getmatch', ensureToken, protectedController, (req, res)=>{
     res.send(HardUser[1].match);
 })
 
@@ -79,6 +67,7 @@ server.delete('/user2deletematches', (req, res)=>{
 })
 
 //Denne update request opdaterer de matches som bruger 1 har. Dvs. at han har ændret sine matches. 
+//Dette vises ved brug af en ny hardcodet user med nogle få ændringer i forhold til user 1 match. 
 server.put('/user1putmatches', (req, res)=>{
     res.send(HardUser[2].match);
 })
@@ -86,22 +75,12 @@ server.put('/user1putmatches', (req, res)=>{
 
 //CRUD for Interests
 //Get request på user 1's interests array. 
-server.get('/user1interestsget', (req, res)=>{
+server.get('/user1getinterests', (req, res)=>{
     res.send(HardUser[0].interests);
 })
 
 //Get request for user 2's interests array.
-server.get('/user2interestsget', (req, res)=>{
-    res.send(HardUser[1].interests);
-})
-
-//Post request for user1 interests array.
-server.post('/user1interestspost', (req, res)=>{
-    res.send(HardUser[0].interests);
-})
-
-//Post request for user2 interests array.
-server.post('/user2interestspost', (req, res)=>{
+server.get('/user2getinterests', (req, res)=>{
     res.send(HardUser[1].interests);
 })
 
@@ -117,15 +96,7 @@ server.put('/user1putinterests', (req, res)=>{
 
 
 
-//server aktiveres
+//server aktiveres ved at lytte på localhost port 3000 
 server.listen(port, () => {
   console.log(`Server-applikation lytter på http://localhost:${port}`)
 })
-
-
-/* 
-er get, post request rigtgt?
-Kan man lave put request på vores måde?
-Delete request??
-Hints til classer
-*/
