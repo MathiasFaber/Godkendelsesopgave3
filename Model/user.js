@@ -20,7 +20,7 @@ class paymentUser extends user{
         this.expireDate = expireDate;
         this.cardNumber = cardNumber;
         this.cvcNumber = cvcNumber;
-    // add super like eller sådan noget
+    // super like?
     }
 }
 
@@ -31,13 +31,11 @@ class freeUser extends user{
     }
 }
 
-class creditCard {
-    contructor(cardHolderName, expireDate, cardNumber, cvcNumber)
+class image {
+    contructor(imagefile)
     {
-        this.cardHolderName = cardHolderName;
-        this.expireDate = expireDate;
-        this.cardNumber = cardNumber;
-        this.cvcNumber = cvcNumber;
+        this.imagefile = imagefile;
+       
     }
 }
 

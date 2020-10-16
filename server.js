@@ -6,7 +6,6 @@ const port = 3000
 const HardUser = require("./HardUser.js")
 
 
-//henter controller fra sti
 const userController = require('./Controller/userController')
 const protectedController = require('./Controller/Protectedcontroller')
 const loginController = require('./Controller/loginController')
@@ -32,13 +31,11 @@ server.get('/user1', ensureToken,  protectedController, (req, res)=> {
 })
 
 //Post (create) request for user2 arrayet. Her tilføjes bruger nr. 2
-
 server.post('/user2', ensureToken,  protectedController, (req, res)=>{
     res.send("Ny bruger tilføjet: " + HardUser[1]);
 })
 
-//Sletter min hardcodede user. (dette giver ikke rigtigt mening i denne opgave, da vi hardcoder)
-//Dette request kan bruges, hvis man ikke havde hardcodet brugerne, og på den måde slette et match eksempelvis
+//Sletter min hardcodede user. 
 server.delete('/user2delete', ensureToken,  protectedController, (req, res)=>{
     res.send('Har slettet:' + " " + HardUser[1].name);
 })
