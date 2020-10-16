@@ -1,5 +1,5 @@
 class user {
-    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match /*interests*/)
+    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     {
         this.name = name;
         this.birthday = birthday;
@@ -10,10 +10,6 @@ class user {
         this.uniqueUserID = uniqueUserID;
         this.interests = interests;
         this.match = match; 
-        //this.interests = new interests;
-
-
-        //like funktion 
     };
 }
 
@@ -29,9 +25,9 @@ class paymentUser extends user{
 }
 
 class freeUser extends user{
-    constructor(name, birthday, gender, location, email, password, uniqueUserID)
+    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     {
-        super(name, birthday, gender, location, email, password, uniqueUserID)
+        super(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     }
 }
 

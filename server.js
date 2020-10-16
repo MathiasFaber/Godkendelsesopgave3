@@ -16,12 +16,13 @@ const ensureToken = require('./Middleware/ensureToken')
 //read endpoint på routen '/'. Her ses alle brugerne. 
 server.get('/', userController)
 
-//server.get('/protected', ensureToken,  protectedController) //denne er brugt i CRUD for user 1, for at beskytte den side, og brugere har kun adgang med login token
-server.post('/login', protectedController)
+//server.post('/login', loginController). Dette post request giver en token, som kan bruges til at logge ind på de sider som er protected.
+//For at komme ind på de sider, hvor der laves CRUD-endpoints til herunder, skal der bruges et token til at komme ind.
+//På den måde er siderne beskyttet, og brugerne skal være logget ind, før de kan komme ind på siderne. 
+server.post('/login', loginController)
 
 // (/login) giver mig et token, men hvordan bruger jeg det token til at komme ind på den (/protected) hjemmeside??
 
-// Her laver jeg min developer branch, den skal være sej 
 
 
 //CRUD for users
@@ -30,51 +31,41 @@ server.get('/user1', ensureToken,  protectedController, (req, res)=> {
     res.send(HardUser[0]);
 })
 
-//get request for user2 arrayet
-server.get('/user2', (req, res)=>{
-    res.send(HardUser[1]);
-})
+//Post (create) request for user2 arrayet. Her tilføjes bruger nr. 2
 
-//Post request for user1 arrayet
-
-server.post('/user1post', (req, res)=>{
-    res.send(HardUser[0]);
-})
-
-//Post request for user2 arrayet
-
-server.post('/user2post', (req, res)=>{
-    res.send(HardUser[1]);
+server.post('/user2', ensureToken,  protectedController, (req, res)=>{
+    res.send("Ny bruger tilføjet: " + HardUser[1]);
 })
 
 //Sletter min hardcodede user. (dette giver ikke rigtigt mening i denne opgave, da vi hardcoder)
 //Dette request kan bruges, hvis man ikke havde hardcodet brugerne, og på den måde slette et match
-server.delete('/user2delete', (req, res)=>{
+server.delete('/user2delete', ensureToken,  protectedController, (req, res)=>{
     res.send('Har slettet:' + " " + HardUser[1].name);
 })
 
 //Denne update request opdaterer en bruger, men da brugerne er hardcodet er dette blot vist ved at,
 //lave en ny bruger ud fra user 1, men med nogle få ændringer. 
-server.put('/user1put', (req, res)=>{
+server.put('/user1put', ensureToken,  protectedController, (req, res)=>{
     res.send(HardUser[2]);
 })
 
 //CRUD for Match
 //Get request på user 1's matches. Han har matchet med bente. Match nummer 2 er "andre brugere" -
 //som skal vise at hans andre matches ville komme ind i det array, hvis han havde flere matches.
-server.get('/user1matchget', (req, res)=>{
+server.get('/user1getmatch', ensureToken,  protectedController, (req, res)=>{
+    res.send(HardUser[0].match);
+})
+
+//Post request for user1 match array. 
+server.post('/user1postmatch', ensureToken,  protectedController, (req, res)=>{
     res.send(HardUser[0].match);
 })
 
 //Get request for user 2 matches
-server.get('/user2matchget', (req, res)=>{
+server.get('/user2matchget', ensureToken,  protectedController, (req, res)=>{
     res.send(HardUser[1].match);
 })
 
-//Post request for user1 match array
-server.post('/user1matchpost', (req, res)=>{
-    res.send(HardUser[0].match);
-})
 
 //Post request for user2 match array
 
