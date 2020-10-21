@@ -1,5 +1,5 @@
 class user {
-    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match /*interests*/)
+    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     {
         this.name = name;
         this.birthday = birthday;
@@ -10,10 +10,6 @@ class user {
         this.uniqueUserID = uniqueUserID;
         this.interests = interests;
         this.match = match; 
-        //this.interests = new interests;
-
-
-        //like funktion 
     };
 }
 
@@ -24,24 +20,22 @@ class paymentUser extends user{
         this.expireDate = expireDate;
         this.cardNumber = cardNumber;
         this.cvcNumber = cvcNumber;
-    // add super like eller sådan noget
+    // super like?
     }
 }
 
 class freeUser extends user{
-    constructor(name, birthday, gender, location, email, password, uniqueUserID)
+    constructor(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     {
-        super(name, birthday, gender, location, email, password, uniqueUserID)
+        super(name, birthday, gender, location, email, password, uniqueUserID, interests, match)
     }
 }
 
-class creditCard {
-    contructor(cardHolderName, expireDate, cardNumber, cvcNumber)
+class image {
+    contructor(imagefile)
     {
-        this.cardHolderName = cardHolderName;
-        this.expireDate = expireDate;
-        this.cardNumber = cardNumber;
-        this.cvcNumber = cvcNumber;
+        this.imagefile = imagefile;
+       
     }
 }
 
